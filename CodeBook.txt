@@ -1,0 +1,40 @@
+CODE BOOK
+
+=====================================================================================================================
+i. The run_analysis.R file contains the script with the 5 steps required in the course. 
+ii.  The data set is downloaded and extracted in the folder UCI HAR Dataset
+
+=======================================================================================================================
+
+1. step 1 merges the training and the test sets to create one data set. 
+To do this, each of the following documents is assigned to a variable as follows:
+
+features <- features.txt with col.names "n","functions"
+activitys <- activity_labels.txt with col.names "code","activity"
+subjecttest <- subject_test.txt with col.names  "subject"
+xtest <- X_test.txt with col.names = features$functions
+ytest <-y_test.txt" with col.names "code"
+subjecttrain <-subject_train.txt with col.names "subject"
+xtrain <- X_train.txt with col.names = features$functions
+ytrain <- y_train.txt with col.names  "code"
+
+then simply mergs row by row for xtrain and xtest to xdf, ytrain and ytest to ydf, subjecttrain and subjecttest subjects and fynaly merge the columns to make completedf
+
+2. Step 2 extracts only the mean and standard deviation from each measurement.
+
+To achieve this, only the columns containing the mean and std terms as well as the subject and code were selected.
+
+3. Step 3 use descriptive activity names to name the activities in the data set
+
+These names are stored in the activitys table. then this code column is replaced by the activity name.
+
+4. Step 4 Appropriately labels the data set with descriptive variable names. To do this, various expression substitutions were used to make the names legible. gsub function and some regular expressions were used. 
+
+finally saved in tidydata
+
+5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+To achieve this, only tidydata was grouped by subject and activity and that result was passed to the summarize_all function so that could compute the mean of each group. that is saved in finaldata table and in FinalData.txt file 
+
+
+
